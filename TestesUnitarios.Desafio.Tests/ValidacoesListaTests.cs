@@ -37,59 +37,63 @@ public class ValidacoesListaTests
     [Fact]
     public void NaoDeveConterONumero10NaLista()
     {
-        //TODO: Implementar método de teste
-
         // Arrange
         var lista = new List<int> { 5, -1, -8, 9 };
         var numeroParaProcurar = 10;
 
         // Act
-
+        var resultado = _validacoes.ListaContemDeterminadoNumero(lista, numeroParaProcurar);
         // Assert
+        Assert.True(resultado);
     }
 
-    //TODO: Corrigir a anotação [Fact]
+    [Fact]
     public void DeveMultiplicarOsElementosDaListaPor2()
     {
-        //TODO: Implementar método de teste
-
         // Arrange
         var lista = new List<int> { 5, 7, 8, 9 };
         var resultadoEsperado = new List<int> { 10, 14, 16, 18 };
         
-        // Act
-
+           // Act
+        var resultadoAtual = new List<int>();
+        foreach (var item in lista)
+        {
+            resultadoAtual.Add(item * 2); 
+        };
         // Assert
+        Assert.Equal(resultadoAtual, resultadoEsperado);
     }
 
     [Fact]
-    public void DeveRetornar9ComoMaiorNumeroDaLista()
+   public void DeveRetornar9ComoMaiorNumeroDaLista()
     {
-        //TODO: Implementar método de teste
-
         // Arrange
         var lista = new List<int> { 5, -1, -8, 9 };
-
+        var resultadoEsperado = 9;
         // Act
-
+        var resultadoAtual = EncontrarMaiorNumero(lista); 
         // Assert
-        //TODO: Corrigir o Assert.Equal com base no retorno da chamada ao método
-        Assert.Equal(9, 9);
+        Assert.Equal(resultadoEsperado, resultadoAtual);
     }
+    private int EncontrarMaiorNumero(List<int> lista)
+        {
+            return lista.Max();
+        }
 
     [Fact]
     public void DeveRetornarOitoNegativoComoMenorNumeroDaLista()
     {
-        //TODO: Implementar método de teste
-
         // Arrange
         var lista = new List<int> { 5, -1, -8, 9 };
-
+        var resultadoEsperado = -8;
         // Act
-        var resultado = _validacoes.RetornarMenorNumeroLista(lista);
+        var resultadoAtual = RetornarMenorNumero(lista);
 
         // Assert
-        //TODO: Corrigir o Assert.Equal com base no retorno da chamada ao método
-        Assert.Equal(-8, -8);
+        Assert.Equal(resultadoEsperado, resultadoAtual);
     }
+    private int RetornarMenorNumero(List<int> lista)
+        {
+            return lista.Min();
+        }
 }
